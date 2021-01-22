@@ -1,5 +1,34 @@
-## UKR
-Ця директорія зберігає у собі практичні завдання та міні-проекти з ООП в мові С++. У розділах нижче ви знайдет коротку інформацію та посилання на книги до самоопрацювання. Зміст буде оновлюватись:
-- [Класи](#класи)
-  * [Синтаксис та Організація](#Синтаксис-та-Організація)
-  * [Конструктори та Деструктори](#Конструктори-та-Деструктори)
+class Sensor {
+    public:
+        int pin;
+        int val;
+    
+        Sensor(int);      
+        void printData(); 
+        void getConfig(); 
+};
+void setup() {
+  Serial.begin(9600);
+  
+}
+
+Sensor::Sensor(int pin_) {
+    pin = pin_;
+}
+
+void Sensor::getConfig() {
+   Serial.print("Pin | "); 
+   Serial.println(pin);
+}
+
+void Sensor::printData() {
+     val = digitalRead(pin);
+     Serial.print("Data | "); 
+     Serial.println(val);
+}
+
+void loop() {
+    Sensor digital(3);
+    digital.getConfig();
+    digital.printData();
+}
